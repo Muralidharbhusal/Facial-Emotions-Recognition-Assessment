@@ -57,7 +57,7 @@ def main():
     
     st.header("Facial Emotion Detections")
     st.write("Click on start to use webcam and detect your face emotion")
-    webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
+    webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV,
                         video_processor_factory=Faceemotion)
 
     
