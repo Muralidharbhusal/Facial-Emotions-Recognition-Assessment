@@ -23,7 +23,13 @@ try:
 except Exception:
     st.write("Error loading cascade classifiers")
 
-#RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
+RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{
+"urls": [
+"turn:13.250.13.83:3478?transport=udp"
+],
+"username": "YzYNCouZM1mhqhmseWk6",
+"credential": "YzYNCouZM1mhqhmseWk6"
+}]})
 
 class Faceemotion(VideoTransformerBase):
     def transform(self, frame):
@@ -57,7 +63,7 @@ def main():
     
     st.header("Facial Emotion Detections")
     st.write("Click on start to use webcam and detect your face emotion")
-    webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV,
+    webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV,rtc_configuration=RTC_CONFIGURATION,
                         video_processor_factory=Faceemotion)
 
     
